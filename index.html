@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IEEE SB CUET - Sciblitz Event</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #122C4F 0%, #5B88B2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #FBF9E3;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(18, 44, 79, 0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .header {
+            padding: 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: none;
+        }
+        
+        .header-gif-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .header-gif {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            display: block;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .ieee-logo {
+            position: relative;
+            z-index: 2;
+            color: #FBF9E3;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .event-title {
+            position: relative;
+            z-index: 2;
+            color: #F0D637;
+            font-size: 48px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+            animation: pulse 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
+        }
+        
+        .subtitle {
+            position: relative;
+            z-index: 2;
+            color: #FBF9E3;
+            font-size: 18px;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px 30px;
+            background: #FBF9E3;
+        }
+        
+        .event-info {
+            background: linear-gradient(135deg, #5B88B2, #122C4F);
+            color: #FBF9E3;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .event-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(240, 214, 55, 0.2), transparent);
+            animation: shine 3s ease-in-out infinite;
+        }
+        
+        @keyframes shine {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .info-item {
+            text-align: center;
+            padding: 15px;
+            background: rgba(251, 249, 227, 0.1);
+            border-radius: 10px;
+            border: 2px solid #F0D637;
+            transition: all 0.3s ease;
+        }
+        
+        .info-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(240, 214, 55, 0.3);
+        }
+        
+        .info-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #F0D637;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .info-value {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .description {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #122C4F;
+            margin-bottom: 30px;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(91, 136, 178, 0.1), rgba(240, 214, 55, 0.1));
+            border-radius: 15px;
+            border-left: 5px solid #F0D637;
+        }
+        
+        .cta-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #F0D637, #FBF9E3);
+            color: #122C4F;
+            padding: 18px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(240, 214, 55, 0.4);
+            margin: 10px;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(240, 214, 55, 0.6);
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .secondary-button {
+            background: linear-gradient(45deg, #5B88B2, #122C4F);
+            color: #FBF9E3;
+            box-shadow: 0 8px 25px rgba(91, 136, 178, 0.4);
+        }
+        
+        .secondary-button:hover {
+            box-shadow: 0 12px 35px rgba(91, 136, 178, 0.6);
+        }
+        
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .highlight-card {
+            background: linear-gradient(135deg, #122C4F, #5B88B2);
+            color: #FBF9E3;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-card::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(240, 214, 55, 0.3), transparent);
+            transition: all 0.5s ease;
+            transform: translate(-50%, -50%);
+        }
+        
+        .highlight-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(18, 44, 79, 0.4);
+        }
+        
+        .highlight-card:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .highlight-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .highlight-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #F0D637;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .highlight-desc {
+            font-size: 14px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .social-section {
+            background: #122C4F;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .social-title {
+            color: #F0D637;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .social-link {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #5B88B2, #F0D637);
+            border-radius: 50%;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #122C4F;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #FBF9E3;
+            transform: scale(0);
+            transition: transform 0.3s ease;
+            border-radius: 50%;
+        }
+        
+        .social-link:hover {
+            transform: scale(1.1);
+        }
+        
+        .social-link:hover::before {
+            transform: scale(1);
+        }
+        
+        .social-link svg {
+            position: relative;
+            z-index: 2;
+            transition: color 0.3s ease;
+        }
+        
+        .partners-section {
+            background: linear-gradient(135deg, #FBF9E3, #5B88B2);
+            padding: 40px 30px;
+            margin-top: 0;
+        }
+        
+        .partners-title {
+            color: #122C4F;
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .partner-category {
+            background: rgba(251, 249, 227, 0.9);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #F0D637;
+            transition: all 0.3s ease;
+        }
+        
+        .partner-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(18, 44, 79, 0.2);
+        }
+        
+        .partner-category h4 {
+            color: #122C4F;
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .partner-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .partner-logo {
+            max-width: 120px;
+            max-height: 60px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            transition: all 0.3s ease;
+            filter: grayscale(20%);
+            opacity: 0.8;
+        }
+        
+        .partner-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        .title-sponsor {
+            max-width: 200px;
+            max-height: 80px;
+        }
+        
+        .footer {
+            background: #122C4F;
+            color: #FBF9E3;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #F0D637;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 1; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 0.5; }
+        }
+        
+        @media (max-width: 600px) {
+            .event-title {
+                font-size: 32px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .highlights {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="header">
+            <div class="header-gif-container">
+                <a href="https://drive.google.com/file/d/1vBa0qG5jDNIRanIWkhvhFlrDrZuegnQI/view?usp=drive_link" target="_blank" rel="noopener">
+                    <img src="logoGIf.gif" alt="Animated IEEE SciBlitz 1.0 event logo with dynamic elements and vibrant colors, conveying excitement and innovation; background features abstract scientific and engineering motifs; text reads IEEE SB CUET SciBlitz 1.0" class="header-gif">
+                </a>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="event-info">
+                <h2 style="color: #F0D637; text-align: center; margin-bottom: 20px; font-size: 28px;">Event Details</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Date</div>
+                        <div class="info-value">July 18, 2025</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Time</div>
+                        <div class="info-value">2:00 PM</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Venue</div>
+                        <div class="info-value">CUET Auditorium</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Competition</div>
+                        <div class="info-value">Two Tracks</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="description">
+                <strong>Advance research, engineering, and science through innovation!</strong><br><br>
+                SciBlitz 1.0 is IEEE SB CUET's inaugural student-led model conference featuring two competitive tracks: <strong>Three-Minute Thesis (3MT)</strong> and <strong>Poster Presentation</strong>. Open to undergraduate students from any discipline, this conference spans 6 cutting-edge thematic research areas from AI-driven technologies to sustainable innovation.
+            </div>
+            
+            <div class="cta-section">
+                <a href="#" class="cta-button" onclick="handleRegistration()">Register Now</a>
+                <a href="#" class="cta-button secondary-button" onclick="handleLearnMore()">Learn More</a>
+            </div>
+            
+            <div class="highlights">
+                <div class="highlight-card" onclick="animateCard(this)">
+                    <div class="highlight-icon">🎯</div>
+                    <div class="highlight-title">3-Minute Thesis Track</div>
+                    <div class="highlight-desc">Present your research in exactly 3 minutes with impact</div>
+                </div>
+                <div class="highlight-card" onclick="animateCard(this)">
+                    <div class="highlight-icon">📊</div>
+                    <div class="highlight-title">Poster Presentation Track</div>
+                    <div class="highlight-desc">Showcase research through visual storytelling</div>
+                </div>
+                <div class="highlight-card" onclick="animateCard(this)">
+                    <div class="highlight-icon">🔬</div>
+                    <div class="highlight-title">6 Research Areas</div>
+                    <div class="highlight-desc">From AI to sustainable technology</div>
+                </div>
+                <div class="highlight-card" onclick="animateCard(this)">
+                    <div class="highlight-icon">🎓</div>
+                    <div class="highlight-title">Student-Led</div>
+                    <div class="highlight-desc">By students, for students across all disciplines</div>
+                </div>
+            </div>
+        
+        <div class="social-section">
+            <div class="social-title">Follow Us</div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61574272244609" class="social-link" title="Facebook">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/ieeesbcuet?igsh=eW5iOGVpODI0ZnN3" class="social-link" title="Instagram">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+                <a href="https://www.youtube.com/@ieeestbcuet1123" class="social-link" title="YouTube">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/company/ieee-cuet-student-branch/" class="social-link" title="LinkedIn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="footer">
+            <p>&copy; 2025 IEEE Student Branch CUET. All rights reserved.</p>
+            <p>Chittagong University of Engineering & Technology</p>
+        </div>
+    </div>
+    
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 20;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Animate highlight cards on click
+        function animateCard(card) {
+            card.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                card.style.transform = 'translateY(-10px) scale(1.05)';
+            }, 100);
+            setTimeout(() => {
+                card.style.transform = 'translateY(-10px)';
+            }, 300);
+        }
+        
+        // Handle registration button
+        function handleRegistration() {
+            const button = event.target;
+            button.style.transform = 'scale(0.95)';
+            button.innerHTML = 'Processing...';
+            
+            setTimeout(() => {
+                button.style.transform = 'scale(1)';
+                button.innerHTML = 'Registration Opening Soon!';
+                button.style.background = 'linear-gradient(45deg, #5B88B2, #122C4F)';
+                button.style.color = '#FBF9E3';
+            }, 1000);
+            
+            setTimeout(() => {
+                button.innerHTML = 'Register Now';
+                button.style.background = 'linear-gradient(45deg, #F0D637, #FBF9E3)';
+                button.style.color = '#122C4F';
+            }, 3000);
+        }
+        
+        // Handle learn more button
+        function handleLearnMore() {
+            const button = event.target;
+            button.style.transform = 'rotateX(360deg)';
+            setTimeout(() => {
+                button.style.transform = 'rotateX(0deg)';
+                alert('More details will be announced soon! Stay tuned to our social media channels.');
+            }, 500);
+        }
+        
+        // Add scroll animations
+        function addScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.highlight-card, .info-item').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+        }
+        
+        // Add dynamic background effects
+        function addBackgroundEffects() {
+            const header = document.querySelector('.header');
+            let mouseX = 0, mouseY = 0;
+            
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX / window.innerWidth;
+                mouseY = e.clientY / window.innerHeight;
+                header.style.background = `linear-gradient(${45 + mouseX * 20}deg, #122C4F, #5B88B2)`;
+            });
+        }
+        
+        // Initialize all animations
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            addScrollAnimations();
+            addBackgroundEffects();
+            
+            // Add some random twinkling effects
+            setInterval(() => {
+                const particles = document.querySelectorAll('.particle');
+                particles[Math.floor(Math.random() * particles.length)].style.opacity = Math.random();
+            }, 1000);
+        });
+        
+        // Add typing effect to the subtitle
+        function typeEffect() {
+            const subtitle = document.querySelector('.subtitle');
+            const text = subtitle.textContent;
+            subtitle.textContent = '';
+            
+            let i = 0;
+            const timer = setInterval(() => {
+                subtitle.textContent += text[i];
+                i++;
+                if (i >= text.length) {
+                    clearInterval(timer);
+                }
+            }, 100);
+        }
+        
+        // Start typing effect after page load
+        window.addEventListener('load', () => {
+            setTimeout(typeEffect, 1000);
+        });
+    </script>
+</body>
+</html>
